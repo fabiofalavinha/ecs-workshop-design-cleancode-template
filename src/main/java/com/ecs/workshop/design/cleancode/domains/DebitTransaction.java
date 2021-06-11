@@ -18,9 +18,9 @@ public class DebitTransaction implements Transaction {
     public String describeTransaction() {
         return String.format(
             "Debit [%1$,.2f] with tax [%2$,.2f] from account [%3$s] with current balance of [%4$,.2f]",
-            debitAmount.getValue().doubleValue(),
-            account.getTax().getValue().doubleValue(),
+            debitAmount.asDouble(),
+            account.getTax().getTaxValue().asDouble(),
             String.join(" - ", account.getNumber().getValue(), account.getClient().getName()),
-            account.getBalance().getValue().doubleValue());
+            account.getBalance().asDouble());
     }
 }

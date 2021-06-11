@@ -29,6 +29,10 @@ public final class Amount {
         return value;
     }
 
+    public double asDouble() {
+        return this.getValue().doubleValue();
+    }
+
     public boolean isEqualsAndGreaterThan(Amount amount) {
         return value.compareTo(amount.getValue()) >= 0;
     }
@@ -43,11 +47,6 @@ public final class Amount {
 
     public Amount add(Amount amount) {
         return Amount.of(this.value.add(amount.getValue()));
-    }
-
-    public Amount subtractPercentual(AdministrativeTax tax) {
-        final BigDecimal percentualValue = this.value.multiply(tax.getValue());
-        return Amount.of(this.value.subtract(percentualValue));
     }
 
     public boolean isZero() {

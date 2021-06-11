@@ -18,9 +18,9 @@ public class CreditTransaction implements Transaction {
     public String describeTransaction() {
         return String.format(
             "Credit [%1$,.2f] to account [%2$s] with current balance of [%3$,.2f]",
-            creditAmount.getValue().doubleValue(),
+            creditAmount.asDouble(),
             String.join(" - ", account.getNumber().getValue(), account.getClient().getName()),
-            account.getBalance().getValue().doubleValue());
+            account.getBalance().asDouble());
     }
 
 }

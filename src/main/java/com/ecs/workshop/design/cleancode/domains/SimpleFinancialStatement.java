@@ -13,6 +13,6 @@ public class SimpleFinancialStatement implements FinancialStatement {
         return String.format(
             "Account [%1$s] has current balance of [%2$,.2f]",
             String.join(" - ", account.getNumber().getValue(), account.getClient().getName()),
-            account.getBalance().getValue().doubleValue());
+            account.getBalance().asDouble());
     }
 }
