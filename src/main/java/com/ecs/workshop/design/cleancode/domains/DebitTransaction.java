@@ -2,23 +2,25 @@ package com.ecs.workshop.design.cleancode.domains;
 
 public class DebitTransaction implements Transaction {
 
-    public static DebitTransaction fromDebitAmount(Amount debitAmount, Amount resumeAmount) {
-        return new DebitTransaction(debitAmount, resumeAmount);
+    public static DebitTransaction fromDebitAmount(Amount amount, Account account) {
+        return new DebitTransaction(amount, account);
     }
 
     private final Amount debitAmount;
-    private final Amount resumeAmount;
+    private final Account account;
 
-    public DebitTransaction(Amount debitAmount, Amount resumeAmount) {
+    private DebitTransaction(Amount debitAmount, Account account) {
         this.debitAmount = debitAmount;
-        this.resumeAmount = resumeAmount;
+        this.account = account;
     }
 
     @Override
     public String describeTransaction() {
         return String.format(
-            "Debit transaction value [%1$,.2f] from balance [%2$,.2f]",
+            "Debit [%1$,.2f] with tax [%2$,.2f] from account [%3$s] with current balance of [%4$,.2f]",
             debitAmount.getValue().doubleValue(),
-            resumeAmount.getValue().doubleValue());
+            account.getTax().getValue().doubleValue(),
+            String.join(" - ", account.getNumber().getValue(), account.getClient().getName()),
+            account.getBalance().getValue().doubleValue());
     }
 }

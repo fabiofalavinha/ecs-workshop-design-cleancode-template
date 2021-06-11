@@ -16,6 +16,6 @@ public final class TransferFinancialOperationReceipt implements Receipt {
 
     @Override
     public String getInformativeText() {
-        return String.join(",", debitTransaction.describeTransaction(), creditTransaction.describeTransaction());
+        return String.join(", ", debitTransaction.describeTransaction(), creditTransaction.describeTransaction());
     }
 }

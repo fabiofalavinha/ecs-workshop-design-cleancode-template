@@ -32,8 +32,9 @@ public class BilletFinancialOperationReceipt implements Receipt {
     @Override
     public String getInformativeText() {
         return String.format(
-            "Billet [%s] paid at [%s] (%s)",
+            "Billet [%s] paid to [%s] at [%s] (%s)",
             billet.getCode(),
+            billet.getTarget().getClient().getName(),
             paid.format(DateTimeFormatter.BASIC_ISO_DATE),
             String.join(",", debitTransaction.describeTransaction(), creditTransaction.describeTransaction()));
     }

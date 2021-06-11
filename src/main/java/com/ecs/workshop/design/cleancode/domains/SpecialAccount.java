@@ -12,11 +12,4 @@ public class SpecialAccount extends AbstractAccount {
     public AdministrativeTax getTax() {
         return DEFAULT_TAX;
     }
-
-    @Override
-    public Transaction debit(Amount amount) {
-        final Amount resumeAmount = this.balance;
-        this.balance = this.balance.subtract(amount);
-        return DebitTransaction.fromDebitAmount(amount, resumeAmount);
-    }
 }

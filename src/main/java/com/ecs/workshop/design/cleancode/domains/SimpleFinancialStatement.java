@@ -11,8 +11,8 @@ public class SimpleFinancialStatement implements FinancialStatement {
     @Override
     public String getInformativeText() {
         return String.format(
-            "Account [%s] has current balance of [%2$,.2f]",
-            account.getNumber().getValue(),
+            "Account [%1$s] has current balance of [%2$,.2f]",
+            String.join(" - ", account.getNumber().getValue(), account.getClient().getName()),
             account.getBalance().getValue().doubleValue());
     }
 }

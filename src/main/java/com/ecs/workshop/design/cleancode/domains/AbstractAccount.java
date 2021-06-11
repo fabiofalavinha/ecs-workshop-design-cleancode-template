@@ -42,17 +42,15 @@ public abstract class AbstractAccount implements Account {
 
     @Override
     public Transaction debit(Amount amount) {
-        final Amount resumeAmount = this.balance;
         this.balance = this.balance.subtract(amount);
         this.balance = this.balance.subtractPercentual(this.getTax());
-        return DebitTransaction.fromDebitAmount(amount, resumeAmount);
+        return DebitTransaction.fromDebitAmount(amount, this);
     }
 
     @Override
     public Transaction credit(Amount amount) {
-        final Amount resumeAmount = this.balance;
         this.balance = this.balance.add(amount);
-        return CreditTransaction.fromCreditAmount(amount, resumeAmount);
+        return CreditTransaction.fromCreditAmount(amount, this);
     }
 
     @Override

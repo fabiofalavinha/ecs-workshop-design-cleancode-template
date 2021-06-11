@@ -2,24 +2,25 @@ package com.ecs.workshop.design.cleancode.domains;
 
 public class CreditTransaction implements Transaction {
 
-    public static CreditTransaction fromCreditAmount(Amount debitAmount, Amount resumeAmount) {
-        return new CreditTransaction(debitAmount, resumeAmount);
+    public static CreditTransaction fromCreditAmount(Amount debitAmount, Account account) {
+        return new CreditTransaction(debitAmount, account);
     }
 
     private final Amount creditAmount;
-    private final Amount resumeAmount;
+    private final Account account;
 
-    public CreditTransaction(Amount debitAmount, Amount resumeAmount) {
+    private CreditTransaction(Amount debitAmount, Account account) {
         this.creditAmount = debitAmount;
-        this.resumeAmount = resumeAmount;
+        this.account = account;
     }
 
     @Override
     public String describeTransaction() {
         return String.format(
-            "Credit transaction value [%1$,.2f] to balance [%2$,.2f]",
+            "Credit [%1$,.2f] to account [%2$s] with current balance of [%3$,.2f]",
             creditAmount.getValue().doubleValue(),
-            resumeAmount.getValue().doubleValue());
+            String.join(" - ", account.getNumber().getValue(), account.getClient().getName()),
+            account.getBalance().getValue().doubleValue());
     }
 
 }
