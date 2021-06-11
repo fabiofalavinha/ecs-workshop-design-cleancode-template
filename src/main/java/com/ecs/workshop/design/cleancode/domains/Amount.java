@@ -49,4 +49,8 @@ public final class Amount {
         final BigDecimal percentualValue = this.value.multiply(tax.getValue());
         return Amount.of(this.value.subtract(percentualValue));
     }
+
+    public boolean isZero() {
+        return this.value.equals(BigDecimal.ZERO);
+    }
 }

@@ -57,8 +57,8 @@ public final class Bank {
     }
 
     public Receipt deposit(Account to, Amount amount) {
-        if (amount.isLessThanZero()) {
-            throw new IllegalArgumentException("Valor inválido. Não é possível depositar um valor negativo.");
+        if (amount.isZero() || amount.isLessThanZero()) {
+            throw new IllegalArgumentException("Valor inválido. Não é possível depositar um valor menor/igual a zero.");
         }
         final FinancialOperation deposit = new DepositFinancialOperation(to, amount);
         return deposit.execute();
