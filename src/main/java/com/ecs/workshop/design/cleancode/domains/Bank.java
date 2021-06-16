@@ -1,25 +1,15 @@
 package com.ecs.workshop.design.cleancode.domains;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.ecs.workshop.design.cleancode.persistence.AccountRepository;
 
 public final class Bank {
 
-    private static Bank instance;
-
-    public static Bank getInstance() {
-        if (instance == null) {
-            instance = new Bank();
-        }
-        return instance;
-    }
-
     private final Agency agency;
-    private final Set<Account> accountSet;
+    private final AccountRepository accountRepository;
 
-    private Bank() {
+    public Bank(AccountRepository accountRepository) {
         this.agency = Agency.newAgency();
-        this.accountSet = new HashSet<>();
+        this.accountRepository = accountRepository;
     }
 
     public Agency getAgency() {
@@ -51,7 +41,7 @@ public final class Bank {
             account = new DefaultAccount(this.getAgency(), client, amount);
         }
 
-        this.accountSet.add(account);
+        this.accountRepository.save(account);
 
         return account;
     }
