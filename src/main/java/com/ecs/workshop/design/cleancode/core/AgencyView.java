@@ -1,6 +1,6 @@
 package com.ecs.workshop.design.cleancode.core;
 
-import com.ecs.workshop.design.cleancode.BankView;
+import com.ecs.workshop.design.cleancode.view.BankView;
 import com.ecs.workshop.design.cleancode.core.exceptions.BankErrorException;
 import org.springframework.stereotype.Component;
 

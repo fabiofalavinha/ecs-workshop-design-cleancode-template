@@ -1,4 +1,4 @@
-package com.ecs.workshop.design.cleancode;
+package com.ecs.workshop.design.cleancode.view;
 
 import com.ecs.workshop.design.cleancode.core.exceptions.BankErrorException;
 

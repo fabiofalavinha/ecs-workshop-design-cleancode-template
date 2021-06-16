@@ -3,6 +3,7 @@ package com.ecs.workshop.design.cleancode;
 import com.ecs.workshop.design.cleancode.core.BankService;
 import com.ecs.workshop.design.cleancode.core.exceptions.OpenAccountFailedException;
 import com.ecs.workshop.design.cleancode.domains.*;
+import com.ecs.workshop.design.cleancode.view.BankView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
