@@ -10,10 +10,11 @@ public class AgencyView implements BankView {
 
     @Override
     public void showWarningMessage(BankErrorException error) {
-        JOptionPane.showMessageDialog(
-            null,
-            error.getLocalizedMessage(),
-            "ATENÇÃO",
-            JOptionPane.WARNING_MESSAGE);
+        final JOptionPane optionPane = new JOptionPane();
+        optionPane.setMessage(error.getLocalizedMessage());
+
+        final JDialog dialog = optionPane.createDialog(null, "ATENÇÃO");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 }
